@@ -21,9 +21,11 @@ try {
        console.log("file is uploaded on cloudinary",response.url );
        return response;
 } catch (error) {
-    fs.unlink(localFilePath)   //remove locally file tempary upload
+    fs.unlink(localFilePath)  
+     //remove locally file tempary upload
+     return null;
 }
 
 }
 
-
+export {uploadOnCloudinay}
