@@ -2,7 +2,6 @@
 import {v2 as cloudinary} from "cloudinary"
 import fs from "fs"
 import dotenv from 'dotenv';
-
 dotenv.config();  
 
 cloudinary.config({
@@ -14,23 +13,22 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localFilePath)=>{
     // console.log("avtar are comes from controllers",localFilePath)
-      // Replace backslashes with forward slashes in file path
-    const cloudinaryFilePath = localFilePath.replace(/\\/g, '/');
    
 
 try {
-    if(!cloudinaryFilePath) return null
+    if(!localFilePath) return null
     //upload file on cloudinay
     const response =await cloudinary.uploader.upload
-       (cloudinaryFilePath,{
+       (localFilePath,{
         resource_type:"auto"
        })
-       console.log("file is uploaded on cloudinary",response.url );
+    //    console.log("file is uploaded on cloudinary",response.url );
+    fs.unlinkSync(localFilePath)
        return response;
+
 } 
 catch (error) {
-    // fs.unlink(cloudinaryFilePath)  
-    //  remove locally file tempary upload
+    fs.unlinkSync(localFilePath)   //  remove locally file tempary upload
            console.error("Error uploading file to ....Cloudinary:", error);
 
      return null;
