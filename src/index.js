@@ -4,8 +4,11 @@ import connectDB from "./db/index.js";
 import dotenv from "dotenv"
 
 
+
+
 dotenv.config({
 });
+
 
 
 connectDB()
@@ -17,7 +20,6 @@ connectDB()
 .catch((err)=>{
     console.log("MONGODB connection Failed",err)
 })
-
 
 
 
