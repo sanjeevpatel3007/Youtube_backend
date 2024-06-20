@@ -138,8 +138,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 
 const deleteVideo = asyncHandler(async (req, res) => {
     const { videoId } = req.params
-    // Validate the videoId
-    // Validate the videoId
+    
     if (!videoId) {
         throw new ApiError(400, "Video ID is required");
     }
